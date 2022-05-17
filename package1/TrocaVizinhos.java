@@ -1,4 +1,4 @@
-package exerciciosEDA;
+package package1;
 
 import java.util.Scanner;
 
