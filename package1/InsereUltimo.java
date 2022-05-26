@@ -1,5 +1,6 @@
 package package1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InsereUltimo {
@@ -16,34 +17,33 @@ public class InsereUltimo {
 			arr[i] = Integer.parseInt(inpSplit[i]);
 		}
 
+		arr = insereUltimo(arr);
+
+		System.out.println(Arrays.toString(arr));
+
+		scn.close();
 	}
 
-	int[] insereUltimo(int[] arr) {
-		for(int i = 0; i < arr.length; i++) {
-			int next_element_index = selectSmallestbyIndex(arr);
-			
-		}
-		return arr;
-	}
+	private static int[] insereUltimo(int[] arr) {
 
-	int selectSmallestbyIndex(int[] arr) {
-		int smallest = -1;
-		int smallest_index = -1;
 		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] < smallest) {
-				smallest = arr[i];
-				smallest_index = i;
+			for (int j = 0; j < i; j++) {
+				if (arr[i] < arr[j]) {
+					insertShift(arr, j, i);
+				}
 			}
 		}
-		return smallest_index;
-	}
-	
-	int[] shiftRight(int[] arr, int pos) {
-		int posVal = arr[pos];
-		for(int i = (pos-1); i > 0; i--) {
-			arr[pos] = arr[pos-1];
-		}
 		return arr;
+	}
+
+	private static void insertShift(int[] arr, int insert_pos, int shift_index) {
+		int val = arr[shift_index];
+
+		for (int i = shift_index; i > insert_pos; i--) {
+			arr[i] = arr[i - 1];
+		}
+
+		arr[insert_pos] = val;
 	}
 
 }
