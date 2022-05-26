@@ -3,7 +3,7 @@ package package1;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class InsereUltimo {
+public class InsertionSort {
 
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
